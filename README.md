@@ -1,6 +1,8 @@
 # Neopixel protocol decoder for Saleae Logic Analyzer
 
-Decode the 800 kHz protocol used in Neopixel (WS2812) LEDs.
+Decode the 800 kHz protocol used in Neopixel (WS2812) LEDs with a Saleae-brand logic analyzer.
+
+Provides bytes above the bit data stream.
 
 ## Installation
 
@@ -11,9 +13,10 @@ Decode the 800 kHz protocol used in Neopixel (WS2812) LEDs.
 
 ## Next steps
 
-1. The signal doesn't properly reset after 50us (the last byte continue
-   forever).
-2. Provide releases pre-built for the major OSes.
+1. The signal doesn't properly reset after 50us (the last byte continues forever).
+2. Provide test data for use in developing the protocol decoder as recommended in the Saleae documentation.
+3. Group the bytes into 24-bit groups and show the actual LED color!
+4. Provide releases pre-built for the major OSes.
 
 ## License
 
