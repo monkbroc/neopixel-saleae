@@ -1,6 +1,7 @@
 #include "NeopixelAnalyzer.h"
 #include "NeopixelAnalyzerSettings.h"
 #include <AnalyzerChannelData.h>
+#include <algorithm>
 
 NeopixelAnalyzer::NeopixelAnalyzer()
 :	Analyzer(),  
@@ -46,10 +47,12 @@ void NeopixelAnalyzer::WorkerThread()
 		//let's put a dot exactly where we sample this byte
 		mResults->AddMarker( starting_sample, AnalyzerResults::Dot, mSettings->mInputChannel );
 
+		U64 last_rising_sample;
 		for( U32 i=0; i<8; i++ )
 		{
 			// At rising edge
 			U64 rising_sample = mSerial->GetSampleNumber();
+			last_rising_sample = rising_sample;
 		
 			// Go to falling edge
 			mSerial->AdvanceToNextEdge();
@@ -71,11 +74,11 @@ void NeopixelAnalyzer::WorkerThread()
 		frame.mData1 = data;
 		frame.mFlags = 0;
 		frame.mStartingSampleInclusive = starting_sample;
-		frame.mEndingSampleInclusive = mSerial->GetSampleNumber();
+		frame.mEndingSampleInclusive = std::min(last_rising_sample + samples_per_bit, mSerial->GetSampleNumber());
 
 		mResults->AddFrame( frame );
 		mResults->CommitResults();
-		ReportProgress( frame.mEndingSampleInclusive );
+		ReportProgress( mSerial->GetSampleNumber() );
 	}
 }
 
