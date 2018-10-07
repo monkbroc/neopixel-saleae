@@ -13,10 +13,9 @@ Provides bytes above the bit data stream.
 
 ## Next steps
 
-1. The signal doesn't properly reset after 50us (the last byte continues forever).
-2. Provide test data for use in developing the protocol decoder as recommended in the Saleae documentation.
-3. Group the bytes into 24-bit groups and show the actual LED color!
-4. Provide releases pre-built for the major OSes.
+1. Provide test data for use in developing the protocol decoder as recommended in the Saleae documentation.
+2. Group the bytes into 24-bit groups and show the actual LED color!
+3. Provide releases pre-built for the major OSes.
 
 ## License
 
