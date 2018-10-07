@@ -4,6 +4,8 @@ Decode the 800 kHz protocol used in Neopixel (WS2812) LEDs with a Saleae-brand l
 
 Provides bytes above the bit data stream.
 
+![Saleae Neopixel](saleae_neopixel.png)
+
 ## Installation
 
 1. Install the [Saleae Protocol Analyzer SDK](http://support.saleae.com/hc/en-us/articles/208667926-Protocol-Analyzer-SDK)
